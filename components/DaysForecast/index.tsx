@@ -70,6 +70,9 @@ export const DaysForecast: React.FC<Props> = ({ data }) => {
     <div>
       <h2>
         5 day / 3 hour forecast
+        <span style={{ fontSize: 10, marginLeft: 8}}>
+          (temperadure in Celsius)
+        </span>
       </h2>
       <div className={styles.headerContainer}>
         <div className={styles.header}>

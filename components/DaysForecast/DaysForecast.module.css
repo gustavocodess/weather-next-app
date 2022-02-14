@@ -1,11 +1,13 @@
 
 .headerContainer {
-  background-color: #eee;
+  background-color: honeydew;
+  border-radius: 5px;
 }
 .header {
   display: flex;
   flex-direction: row;
   margin-left: 100px;
+  border-bottom: 3px solid #eee;
 }
 
 .rowContainer {
