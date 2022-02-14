@@ -1,7 +1,11 @@
 import React from 'react'
 import { Button as EButton } from 'evergreen-ui'
+interface Props {
+  label: string;
+  onClick: () => void;
+}
 
-export const Button: React.FC = ({ label = 'click me', onClick = () => {} }) => {
+export const Button: React.FC<Props> = ({ label = 'click me', onClick = () => {} }) => {
   return (
     <EButton
       size="large"

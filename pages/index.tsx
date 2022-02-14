@@ -84,7 +84,9 @@ const Home: NextPage = () => {
 
         {
           selectedCountry && selectedCity && (
-            <Button label="CHECK WEATHER" onClick={() => {}}/>
+            <a style={{ marginTop: 26 }} href={`/weather/${selectedCity}-${selectedCountry}`.toLowerCase()}>
+              <Button label="CHECK WEATHER" onClick={() => {}}/>
+            </a>
           )
         }
 
