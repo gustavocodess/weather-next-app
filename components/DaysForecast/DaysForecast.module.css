@@ -1,0 +1,20 @@
+
+.headerContainer {
+  background-color: #eee;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  margin-left: 100px;
+}
+
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.rowText {
+  width: 100px;
+  text-align: center;
+}
