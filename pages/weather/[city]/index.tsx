@@ -1,12 +1,12 @@
 import type { GetServerSidePropsContext, NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { DaysForecast, InfoCard } from '../../../components'
+import { DaysForecast, HourlyForecast, InfoCard, Map } from '../../../components'
 
 const Weather: NextPage = ({ hourlyCurrent, hourly5 }) => {
   const router = useRouter()
   const city = router.query.city as string
 
-  console.log('PROPS ', hourlyCurrent)
+  // console.log('PROPS ', hourlyCurrent)
   return (
     <div>
       <div style={{ padding: 48, display: 'flex', flexDirection: 'column' }}>
@@ -16,7 +16,9 @@ const Weather: NextPage = ({ hourlyCurrent, hourly5 }) => {
             city={city}
           />
 
-          <div style={{ display: 'flex', flexDirection: 'column', flex: 1.5 }} />
+          <div style={{ display: 'flex', flexDirection: 'column', flex: 1.5 }}>
+            <Map lat={hourlyCurrent?.lat} lng={hourlyCurrent?.lon} />
+          </div>
 
         </div>
 
@@ -25,6 +27,14 @@ const Weather: NextPage = ({ hourlyCurrent, hourly5 }) => {
         <DaysForecast
           data={hourly5.list}
         />
+
+        <br />
+
+        <div style={{ width: '100%' }}>
+          <HourlyForecast
+            data={hourlyCurrent?.hourly}
+          />
+        </div>
 
       </div>
     </div>

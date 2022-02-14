@@ -3,8 +3,17 @@ import { FaWind } from 'react-icons/fa'
 import moment from 'moment'
 import styles from './InfoCard.module.css'
 
-export const InfoCard: React.FC = ({
-  city,
+export interface CurrentWeather {
+  city: string | undefined;
+  temp: number,
+  feels_like: number,
+  wind_speed: number,
+  humidity: number,
+  dew_point: number,
+  dt: number
+}
+
+export const InfoCard: React.FC<CurrentWeather> = ({ city ,
   temp,
   feels_like,
   wind_speed,
