@@ -6,11 +6,19 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import countriesData from '../data/countries'
 import flagsData from '../data/flags'
+import Button from '../components/Button'
 
 const Home: NextPage = () => {
   const [selectedCountry, setSelectedCountry] = useState<string>()
+  const [selectedCity, setSelectedCity] = useState<string>()
+  const [availableCities, setAvailableCities] = useState<Array<string>>([])
 
   const countries = countriesData.map((item) => item)
+
+  const handleSetCities = (iso2: string) => {
+    const cities = countries.find((country) => country.iso2 === iso2)?.cities || []
+    setAvailableCities(cities)
+  }
 
   return (
     <div className={styles.container}>
@@ -28,6 +36,8 @@ const Home: NextPage = () => {
           value={selectedCountry}
           onChange={(e) => {
             setSelectedCountry(e.target.value)
+            handleSetCities(e.target.value)
+            setSelectedCity(undefined)
           }}
           defaultValue=""
           style={{ fontSize: 26, lineHeight: 26 }}
@@ -40,7 +50,45 @@ const Home: NextPage = () => {
               </option>
             ))
           }
-      </select>
+        </select>
+
+        {
+          selectedCountry && (
+            <>
+              <p className={styles.title}>
+                Select a city
+              </p>
+              <br />
+              <div>
+                <select
+                  name="cities_select"
+                  value={selectedCity}
+                  onChange={(e) => {
+                    setSelectedCity(e.target.value)
+                  }}
+                  defaultValue=""
+                  style={{ fontSize: 26, lineHeight: 26 }}
+                >
+                  {
+                    availableCities.map((city: string) => (
+                      <option value={city} key={city}>
+                        {city}
+                      </option>
+                    ))
+                  }
+                </select>
+              </div>
+            </>
+          )
+        }
+
+        {
+          selectedCountry && selectedCity && (
+            <Button label="CHECK WEATHER" onClick={() => {}}/>
+          )
+        }
+
+
       </main>
 
       <footer className={styles.footer}>
